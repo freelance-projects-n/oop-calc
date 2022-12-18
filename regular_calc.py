@@ -31,27 +31,26 @@ class RegularCalculator(AbstractCalculator):
     def _get_method_for_calc(operation: RegularOperations) -> Callable[[float,
                                                                         float],
                                                                        float]:
-        match operation:
-            case RegularOperations.addition:
-                return lambda a, b: a + b
+        if operation == RegularOperations.addition:
+            return lambda a, b: a + b
 
-            case RegularOperations.subtraction:
-                return lambda a, b: a - b
+        elif operation == RegularOperations.subtraction:
+            return lambda a, b: a - b
 
-            case RegularOperations.multiplication:
-                return lambda a, b: a * b
+        elif operation == RegularOperations.multiplication:
+            return lambda a, b: a * b
 
-            case RegularOperations.exponentiation:
-                return lambda a, b: a ** b
+        elif operation == RegularOperations.exponentiation:
+            return lambda a, b: a ** b
 
-            case RegularOperations.division:
-                return lambda a, b: a / b
+        elif operation == RegularOperations.division:
+            return lambda a, b: a / b
 
-            case RegularOperations.integer_division:
-                return lambda a, b: a // b
+        elif operation == RegularOperations.integer_division:
+            return lambda a, b: a // b
 
-            case RegularOperations.remainder_of_division:
-                return lambda a, b: a % b
+        elif operation == RegularOperations.remainder_of_division:
+            return lambda a, b: a % b
 
-            case _:
-                raise NotSupportedMethodError()
+        else:
+            raise NotSupportedMethodError()
